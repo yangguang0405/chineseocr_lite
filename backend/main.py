@@ -11,6 +11,7 @@ import tornado.ioloop
 from tornado.web import StaticFileHandler
 from backend.tools.get_host_ip import host_ip
 from backend.webInterface import tr_run
+from backend.webInterface import tr_run2
 from backend.webInterface import tr_index
 from backend.tools import log
 import logging
@@ -26,6 +27,7 @@ settings = dict(
 def make_app():
     return tornado.web.Application([
         (r"/api/tr-run/", tr_run.TrRun),
+        (r"/api/tr-run2/", tr_run2.TrRun),
         (r"/", tr_index.Index),
         (r"/(.*)", StaticFileHandler,
          {"path": os.path.join(current_path, "dist/chineseocr_lite_fontend"), "default_filename": "index.html"}),
